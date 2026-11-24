@@ -29,6 +29,8 @@ jobs:
           result = subprocess.check_output([
               'yt-dlp', '--flat-playlist', '--playlist-end', '1',
               '--dump-single-json', '--no-warnings',
+              '--extractor-args', 'youtube:lang=es',
+              '--add-headers', 'Accept-Language:es-ES,es;q=0.9',
               'https://www.youtube.com/@Gunxel/videos'
           ], text=True)
           data = json.loads(result)
