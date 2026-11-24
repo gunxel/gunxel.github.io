@@ -1,0 +1,58 @@
+name: Actualizar último vídeo largo
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17,47 * * * *'
+  push:
+    paths:
+      - '.github/workflows/latest-video.yml'
+permissions:
+  contents: write
+concurrency:
+  group: latest-video
+  cancel-in-progress: false
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Consultar vídeos del canal
+        run: |
+          python -m pip install --disable-pip-version-check yt-dlp
+          python - <<'PY'
+          import json, re, subprocess
+          from pathlib import Path
+          result = subprocess.check_output([
+              'yt-dlp', '--flat-playlist', '--playlist-end', '1',
+              '--dump-single-json', '--no-warnings',
+              'https://www.youtube.com/@Gunxel/videos'
+          ], text=True)
+          data = json.loads(result)
+          entries = data.get('entries') or []
+          if not entries:
+              raise SystemExit('No se encontraron vídeos')
+          video = entries[0]
+          video_id = video.get('id', '')
+          title = video.get('title', '')
+          if not re.fullmatch(r'[A-Za-z0-9_-]{11}', video_id) or not title:
+              raise SystemExit('Datos del vídeo no válidos')
+          Path('latest-video.json').write_text(
+              json.dumps({'id': video_id, 'title': title}, ensure_ascii=False, indent=2) + '\n',
+              encoding='utf-8'
+          )
+          PY
+      - name: Guardar si hay un nuevo vídeo
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add latest-video.json
+          if git diff --cached --quiet; then
+            exit 0
+          fi
+          git commit -m "Actualizar último vídeo de Gunxel"
+          git pull --rebase origin main
+          git push origin HEAD:main
