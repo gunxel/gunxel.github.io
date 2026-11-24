@@ -117,3 +117,6 @@ body{background:#190c2c;position:relative;isolation:isolate}#nether-bg{position:
 
 /* Presentación más compacta */
 .hero{padding:28px 0 42px;min-height:0;align-items:start}.hero-copy h1{margin-top:0}.hero-art{padding-top:0}@media(max-width:800px){.hero{padding:24px 0 32px;gap:28px}}
+
+/* Etiqueta de modo creativo: menú clásico de Minecraft */
+.art-label .mc-mode-label{display:inline-block;padding:8px 14px;background:#777;border:2px solid #181818;border-radius:0;box-shadow:inset 2px 2px 0 #bcbcbc,inset -2px -2px 0 #414141,2px 3px 0 #0007;color:#fff;font-size:14px;line-height:1.1;letter-spacing:0;text-shadow:2px 2px 0 #333;white-space:nowrap;}
