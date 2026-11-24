@@ -135,3 +135,6 @@ body{background:#190c2c;position:relative;isolation:isolate}#nether-bg{position:
 
 /* Elevar el render y mantener la base luminosa visible */
 .hero-art.skin-stage{align-self:start;justify-content:flex-start}.skin-window{aspect-ratio:auto;height:clamp(280px,32vw,480px)}.skin-window .skin-render{width:100%;height:128%;max-width:none;flex-shrink:0;object-fit:contain;object-position:center bottom;align-self:flex-end}.skin-caption{padding-top:10px}@media(max-width:800px){.skin-window{height:clamp(260px,65vw,420px)}}
+
+/* Esperar a que el render esté descargado y decodificado */
+.skin-stage:not(.skin-ready) .skin-render{opacity:0;animation:none}.skin-stage:not(.skin-ready) .skin-particles i{animation:none;opacity:0}.skin-stage.skin-ready .skin-render{animation:skin-emerge 1.35s cubic-bezier(.15,.8,.2,1) both}.skin-stage.skin-ready .skin-particles i{animation:skin-particle 1.8s var(--delay) ease-out both}.tnt-loading .skin-stage.skin-ready .skin-render,.tnt-loading .skin-stage.skin-ready .skin-particles i{animation-play-state:paused}@media(prefers-reduced-motion:reduce){.skin-stage.skin-ready .skin-render{animation:none;opacity:1}.skin-stage.skin-ready .skin-particles i{animation:none}}
