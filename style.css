@@ -123,3 +123,6 @@ body{background:#190c2c;position:relative;isolation:isolate}#nether-bg{position:
 
 /* Título compacto, sin dejar la conjunción sola */
 .hero-copy{min-width:0;container-type:inline-size}.hero-copy h1{font-size:clamp(28px,8.8cqi,70px);line-height:1.04;margin:0 0 22px}.hero-copy h1 span{white-space:nowrap}
+
+/* Catálogo de add-ons */
+.addon-catalog{min-height:65vh;padding:42px 0 64px}.addon-catalog h1{margin:0 0 30px}.addon-editions,.addon-prices{display:flex;flex-wrap:wrap;gap:10px}.addon-editions{border-bottom:2px solid #514369;padding-bottom:16px}.addon-edition,.addon-price{font-family:var(--pixel);font-weight:700;cursor:pointer;border:2px solid #252735;border-radius:3px;color:#fff;background:#4c4f5c;box-shadow:inset 2px 2px #ffffff25,inset -2px -2px #0005,0 3px #090a12;padding:10px 18px;font-size:18px}.addon-edition.active{background:#79cfff;color:#101b35;border-color:#b2e7ff}.addon-prices{margin:20px 0 28px}.addon-price{font-size:16px;padding:7px 16px}.addon-price.active{background:#654ab6;border-color:#a88bff}.addon-edition:hover,.addon-price:hover{filter:brightness(1.15)}.addon-results{min-height:160px}.addon-results [hidden]{display:none!important}.addon-results #addon-empty{padding:24px 0;color:var(--muted)}@media(max-width:600px){.addon-catalog{padding:28px 0 42px}.addon-edition{font-size:16px;padding:9px 12px}}
