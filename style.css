@@ -65,3 +65,16 @@ html.tnt-loading{overflow:hidden}
 @keyframes tnt-shake{0%,100%{transform:none}25%{transform:translate(-5px,3px)}50%{transform:translate(5px,-3px)}75%{transform:translate(-3px,-2px)}}
 @keyframes tnt-reveal{to{opacity:0;visibility:hidden;pointer-events:none}}
 @media(prefers-reduced-motion:reduce){#tnt-intro{display:none}html.tnt-loading{overflow:auto}}
+
+/* v11 — vanilla TNT textures and Minecraft-style smoke */
+.tnt-front,.tnt-top,.tnt-side{border:0;box-shadow:none;background-size:100% 100%;image-rendering:pixelated}
+.tnt-front{background-image:url('https://raw.githubusercontent.com/InventivetalentDev/minecraft-assets/1.21.4/assets/minecraft/textures/block/tnt_side.png')}
+.tnt-front span{visibility:hidden}
+.tnt-top{background-image:url('https://raw.githubusercontent.com/InventivetalentDev/minecraft-assets/1.21.4/assets/minecraft/textures/block/tnt_top.png')}
+.tnt-side{background-image:url('https://raw.githubusercontent.com/InventivetalentDev/minecraft-assets/1.21.4/assets/minecraft/textures/block/tnt_side.png');filter:brightness(.72)}
+.tnt-block{animation:tnt-vanilla-prime 1.35s linear both}
+@keyframes tnt-vanilla-prime{0%{opacity:1;transform:translate(-13px,-25px) scale(.9)}15%,45%,72%{filter:none;transform:translate(-13px,0) scale(1)}32%,58%,85%{filter:brightness(0) invert(1);transform:translate(-13px,0) scale(1.08)}94%{filter:none;opacity:1;transform:translate(-13px,0) scale(1.2)}100%{opacity:0;transform:translate(-13px,0) scale(1.25)}}
+.tnt-particle{background:var(--shade);clip-path:polygon(0 25%,25% 25%,25% 0,75% 0,75% 25%,100% 25%,100% 75%,75% 75%,75% 100%,25% 100%,25% 75%,0 75%);box-shadow:none;animation:tnt-smoke .85s cubic-bezier(.12,.65,.2,1) 1.35s forwards}
+@keyframes tnt-smoke{0%{opacity:1;transform:translate(-50%,-50%) scale(.7)}45%{opacity:1}100%{opacity:0;transform:translate(var(--dx),var(--dy)) scale(2.5)}}
+.tnt-burst{background:#e9e9e9;clip-path:polygon(0 25%,25% 25%,25% 0,75% 0,75% 25%,100% 25%,100% 75%,75% 75%,75% 100%,25% 100%,25% 75%,0 75%)}
+#tnt-intro{animation-delay:1.85s}
