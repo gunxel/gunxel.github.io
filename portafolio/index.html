@@ -16,9 +16,9 @@
     })();
     </script>
 
-    <meta name="site-version" content="20261124.50">
+    <meta name="site-version" content="20261124.51">
 
-    <link rel="icon" type="image/png" href="/marca_agua_youtube_150.png?v=20261124.50">
+    <link rel="icon" type="image/png" href="/marca_agua_youtube_150.png?v=20261124.51">
 
     <link rel="preload" as="image" href="https://raw.githubusercontent.com/InventivetalentDev/minecraft-assets/1.21.4/assets/minecraft/textures/block/tnt_side.png">
 
@@ -149,7 +149,7 @@
         <a class="brand" href="/">
             <img
                 class="logo-image"
-                src="/marca_agua_youtube_150.png?v=20261124.50"
+                src="/marca_agua_youtube_150.png?v=20261124.51"
                 alt=""
                 width="42"
                 height="42"
@@ -270,25 +270,7 @@
                 Soy Gunxel un creador de contenido y desarrollador - Historias en Minecraft - Add-ons - Videojuegos - modelos 3D y asset packs.
             </p>
 
-            <div class="filters" aria-label="Filtrar proyectos">
-
-                <button class="filter active" data-filter="all" aria-pressed="true">
-                    Todo
-                </button>
-
-                <button class="filter" data-filter="games" aria-pressed="false">
-                    Videojuegos
-                </button>
-
-                <button class="filter" data-filter="models" aria-pressed="false">
-                    Modelos 3D
-                </button>
-
-                <button class="filter" data-filter="packs" aria-pressed="false">
-                    Asset packs
-                </button>
-
-            </div>
+            
 
             <div class="project-grid">
 
@@ -395,7 +377,7 @@
 
                     <img
                         class="logo-image"
-                        src="/marca_agua_youtube_150.png?v=20261124.50"
+                        src="/marca_agua_youtube_150.png?v=20261124.51"
                         alt=""
                         width="36"
                         height="36"
@@ -591,5 +573,5 @@
         }
     </style>
 
-<script>addEventListener('DOMContentLoaded',()=>{if(new URLSearchParams(location.search).get('categoria')==='packs')document.querySelector('.filter[data-filter="packs"]')?.click()});</script></body>
+<script>addEventListener('DOMContentLoaded',()=>{if(new URLSearchParams(location.search).get('categoria')==='packs')document.querySelectorAll('.portfolio-card .project').forEach(p=>{p.hidden=p.dataset.category!=='packs'})});</script></body>
 </html>
