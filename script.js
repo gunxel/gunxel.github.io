@@ -11,3 +11,7 @@ filters.forEach(button=>button.addEventListener('click',()=>{filters.forEach(b=>
 if(config.youtube){const link=document.querySelector('#youtube-link');link.href=config.youtube;link.textContent='Visitar mi canal ↗';}
 for(const [url,label] of [[config.email?'mailto:'+config.email:'','Correo electrónico'],[config.store,'Tienda de assets']]){if(!url)continue;const link=document.createElement('a');link.href=url;link.textContent=label+' ↗';link.className='button secondary';document.querySelector('#social-links').append(link);}
 document.querySelector('#year').textContent=new Date().getFullYear();
+const discordUser='gunxelmc';
+function copyDiscord(){return navigator.clipboard?navigator.clipboard.writeText(discordUser):Promise.reject(new Error('Clipboard unavailable'));}
+document.querySelectorAll('.discord-contact').forEach(a=>a.addEventListener('click',()=>{copyDiscord().catch(()=>{});}));
+const copyButton=document.querySelector('#copy-discord');if(copyButton)copyButton.addEventListener('click',()=>{copyDiscord().then(()=>{copyButton.textContent='Usuario copiado';}).catch(()=>{window.prompt('Copia mi usuario de Discord:',discordUser);});});
