@@ -40,3 +40,28 @@
 @media(min-width:801px) and (max-width:1000px){.project-grid{gap:12px}.project-body{padding-inline:8px}.project-body h3{font-size:23px}}
 @media(max-width:800px){.project-grid{gap:18px}.project .visual{height:170px}.youtube-panel{padding:18px;gap:18px}.yt-icon{max-width:100%;aspect-ratio:2.5}.about>div:last-child{padding:20px}.contact{margin-block:25px 40px;padding:25px 15px}}
 @media(prefers-reduced-motion:reduce){.project:hover,.project:hover .visual svg{transform:none}}
+
+/* v9 — TNT loading intro */
+html.tnt-loading{overflow:hidden}
+#tnt-intro{position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:#090b17;overflow:hidden;isolation:isolate;animation:tnt-reveal .45s ease 1.65s forwards}
+.tnt-scene{position:relative;width:220px;height:240px;display:grid;place-items:center;perspective:700px;animation:tnt-shake .25s linear 1.2s both}
+.tnt-block{width:108px;height:108px;position:relative;transform:translate(-13px,0);animation:tnt-prime 1.35s linear both;z-index:2;image-rendering:pixelated}
+.tnt-front,.tnt-top,.tnt-side{position:absolute;border:4px solid #4a151e;box-sizing:border-box}
+.tnt-front{inset:0;background:repeating-linear-gradient(90deg,#bc202d 0 13px,#f24442 13px 25px,#921b27 25px 27px);display:grid;place-items:center;box-shadow:inset 4px 4px #ff7770,inset -4px -4px #751623}
+.tnt-front span{width:100%;text-align:center;font-family:var(--pixel,monospace);font-size:34px;font-weight:700;line-height:1.12;color:#201820;background:#eae3d5;border-block:3px solid #b6a79c;letter-spacing:1px}
+.tnt-top{width:108px;height:36px;left:0;top:-36px;transform:skewX(-45deg);transform-origin:bottom left;background:repeating-linear-gradient(90deg,#bd2932 0 12px,#ee4e44 12px 24px);box-shadow:inset 0 0 0 5px #ff71684d}
+.tnt-side{width:36px;height:108px;left:108px;top:0;transform:skewY(-45deg);transform-origin:top left;background:linear-gradient(#a31d2a 0 33%,#b9ada0 33% 65%,#8b1824 65%);border-color:#4a151e}
+.tnt-shadow{position:absolute;width:145px;height:20px;top:181px;background:#0008;filter:blur(7px);animation:tnt-shadow-out 1.35s forwards}
+.tnt-caption{position:absolute;top:207px;color:#bcb2df;letter-spacing:3px;font-size:15px;white-space:nowrap;animation:tnt-shadow-out 1.35s forwards}
+.tnt-caption span{animation:tnt-dots .35s steps(2,end) infinite}
+.tnt-particle{position:absolute;z-index:3;left:50%;top:45%;width:var(--size);height:var(--size);background:var(--shade);box-shadow:2px 2px #0003;opacity:0;animation:tnt-particle .65s cubic-bezier(.1,.7,.3,1) 1.35s forwards}
+.tnt-burst{position:absolute;left:50%;top:45%;width:40px;height:40px;background:#fff2c6;opacity:0;z-index:4;animation:tnt-burst .35s ease-out 1.35s forwards}
+#skip-tnt{position:absolute;bottom:24px;right:24px;color:#c9c5e0;background:#15172a;border:1px solid #51476f;padding:7px 13px;font:inherit}
+@keyframes tnt-prime{0%{opacity:0;transform:translate(-13px,-35px)}12%,30%,48%,66%,80%,92%{opacity:1;filter:none;transform:translate(-13px,0) scale(1)}22%,40%,57%,73%,86%,96%{opacity:1;filter:brightness(2.1) saturate(.25);transform:translate(-13px,0) scale(1.08)}99%{opacity:1}100%{opacity:0;transform:translate(-13px,0) scale(1.2)}}
+@keyframes tnt-particle{0%{opacity:1;transform:translate(-50%,-50%) scale(.5)}20%{opacity:1}100%{opacity:0;transform:translate(var(--dx),var(--dy)) rotate(var(--rot)) scale(.5)}}
+@keyframes tnt-burst{0%{opacity:.9;transform:translate(-50%,-50%) scale(1)}100%{opacity:0;transform:translate(-50%,-50%) scale(9)}}
+@keyframes tnt-shadow-out{0%,96%{opacity:1}100%{opacity:0}}
+@keyframes tnt-dots{50%{opacity:.3}}
+@keyframes tnt-shake{0%,100%{transform:none}25%{transform:translate(-5px,3px)}50%{transform:translate(5px,-3px)}75%{transform:translate(-3px,-2px)}}
+@keyframes tnt-reveal{to{opacity:0;visibility:hidden;pointer-events:none}}
+@media(prefers-reduced-motion:reduce){#tnt-intro{display:none}html.tnt-loading{overflow:auto}}
