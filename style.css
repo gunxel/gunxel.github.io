@@ -99,3 +99,7 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;ba
 .header{background:#090b17ed}
 .strip{background:#101326df}
 @media(max-width:800px){body::before{background-position:center,center,65% center;background-image:linear-gradient(90deg,#090b17d9,#090b17b8),linear-gradient(0deg,#090b17b3,#17122e26),url("https://res.cloudinary.com/dol86wsz1/image/upload/c_limit,w_1600,f_auto,q_auto:good/v1781341865/summer_art/mcp-img-1781341864899.png")}}
+
+/* v17 — Crystal Sky Islands, Summer Engine, CC0; night color grading */
+body::before{background:linear-gradient(90deg,#090b17e8 0%,#0c1029a6 48%,#17103b45 100%),linear-gradient(0deg,#090b17a6,#18104c33),url("https://res.cloudinary.com/dol86wsz1/image/upload/c_limit,w_1600,f_auto,q_auto:good/v1792016859/summer_art/img-2526cf19-faea-4552-b0de-63d52a356f0c-1792016858611-0_1792016858611_8e3kez7c.png") center/cover no-repeat;background-blend-mode:normal,multiply,normal;filter:saturate(1.22) brightness(.78)}
+@media(max-width:800px){body::before{background-position:center,center,65% center;background-image:linear-gradient(90deg,#090b17d9,#0b1027a6),linear-gradient(0deg,#090b17a6,#18104c33),url("https://res.cloudinary.com/dol86wsz1/image/upload/c_limit,w_1600,f_auto,q_auto:good/v1792016859/summer_art/img-2526cf19-faea-4552-b0de-63d52a356f0c-1792016858611-0_1792016858611_8e3kez7c.png")}}
