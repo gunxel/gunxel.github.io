@@ -100,3 +100,5 @@ body{background:#190c2c;position:relative;isolation:isolate}#nether-bg{position:
 
 /* Botón Discord */
 .header .nav-cta.discord-contact{background:#5865F2;border-color:#5865F2;color:#fff;transition:background .18s,border-color .18s}.header .nav-cta.discord-contact:hover{background:#4752C4;border-color:#4752C4;color:#fff}.header .nav-cta.discord-contact:active{background:#3c45a5;border-color:#3c45a5}
+
+.header nav{align-items:center}.header nav .youtube-nav{display:inline-flex;align-items:center;justify-content:center;gap:6px;background:#e60000;color:#fff;border:1px solid #e60000;border-radius:6px;padding:5px 10px;white-space:nowrap;font-size:14px;transition:background .18s}.header nav .youtube-nav:hover{background:#b90000;border-color:#b90000;color:#fff}.youtube-nav svg{flex:none}@media(max-width:800px){.header nav{align-items:stretch}.header nav .youtube-nav{align-self:flex-start}}
