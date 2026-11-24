@@ -16,9 +16,9 @@
     })();
     </script>
 
-    <meta name="site-version" content="20261124.33">
+    <meta name="site-version" content="20261124.37">
 
-    <link rel="icon" type="image/png" href="marca_agua_youtube_150.png?v=20261124.33">
+    <link rel="icon" type="image/png" href="marca_agua_youtube_150.png?v=20261124.37">
 
     <link rel="preload" as="image" href="https://raw.githubusercontent.com/InventivetalentDev/minecraft-assets/1.21.4/assets/minecraft/textures/block/tnt_side.png">
 
@@ -367,7 +367,7 @@
         <a class="brand" href="#inicio">
             <img
                 class="logo-image"
-                src="marca_agua_youtube_150.png?v=20261124.33"
+                src="marca_agua_youtube_150.png?v=20261124.37"
                 alt=""
                 width="42"
                 height="42"
@@ -513,6 +513,10 @@
 
                 
 
+                <a class="latest-video-card" id="latest-video-card" href="https://www.youtube.com/@Gunxel/videos" target="_blank" rel="noopener noreferrer"><div class="latest-video-thumb" aria-hidden="true"><img id="latest-video-image" alt="" hidden><span class="latest-video-play">▶</span></div><div class="latest-video-copy"><span class="latest-video-kicker">ÚLTIMO VÍDEO</span><strong id="latest-video-title">Descubre mi último vídeo</strong><span class="latest-video-link">Ver en YouTube ↗</span></div></a>
+<script>
+fetch('/latest-video.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error();return r.json()}).then(video=>{if(!/^[A-Za-z0-9_-]{11}$/.test(video.id)||typeof video.title!=='string')return;const card=document.getElementById('latest-video-card'),img=document.getElementById('latest-video-image');card.href='https://www.youtube.com/watch?v='+video.id;document.getElementById('latest-video-title').textContent=video.title;img.src='https://i.ytimg.com/vi/'+video.id+'/mqdefault.jpg';img.hidden=false;img.onerror=()=>{img.hidden=true};}).catch(()=>{});
+</script>
             </div>
 
             <div class="hero-art">
@@ -805,7 +809,7 @@
 
                     <img
                         class="logo-image"
-                        src="marca_agua_youtube_150.png?v=20261124.33"
+                        src="marca_agua_youtube_150.png?v=20261124.37"
                         alt=""
                         width="36"
                         height="36"
