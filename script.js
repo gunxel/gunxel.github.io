@@ -19,3 +19,6 @@ async function copyAndReport(){const ok=await copyDiscord();const status=documen
 document.querySelectorAll('.discord-contact').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();showDiscord();copyAndReport();}));
 document.querySelector('#copy-discord')?.addEventListener('click',()=>{showDiscord();copyAndReport();});
 document.querySelector('#discord-copy-confirm').addEventListener('click',copyAndReport);
+
+/* Acceso directo a la categoría de packs */
+document.querySelectorAll('[data-project-filter]').forEach(link=>link.addEventListener('click',()=>{const filter=Array.from(document.querySelectorAll('.filter')).find(button=>button.dataset.filter===link.dataset.projectFilter);if(filter)filter.click();}));
