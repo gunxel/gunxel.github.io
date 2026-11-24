@@ -87,3 +87,6 @@ html.tnt-loading{overflow:hidden}
 .tnt-block{animation:tnt-vanilla-prime 1.35s linear both}
 .tnt-scene{animation:tnt-shake .25s linear 1.2s both}
 @media(prefers-reduced-motion:reduce){#tnt-intro{display:none}}
+
+/* v13 — smoke emerges from the blast, never a screen-sized mask */
+#tnt-intro.exploded{background:transparent;pointer-events:none}#tnt-intro.exploded .tnt-scene{visibility:hidden}
