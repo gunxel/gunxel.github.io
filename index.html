@@ -8,16 +8,67 @@
 
     <title>Gunxel — Creador de contenido y desarrollador</title>
 
-    <link rel="stylesheet" href="style.css?v=20261124.26">
-    <script src="script.js?v=20261124.26" defer></script>
+    <script>
+    (() => {
+        const stamp = Date.now();
+        document.write('<link rel="stylesheet" href="style.css?_asset=' + stamp + '">');
+        document.write('<script src="script.js?_asset=' + stamp + '" defer><' + '/script>');
+    })();
+    </script>
 
-    <meta name="site-version" content="20261124.26">
+    <meta name="site-version" content="20261124.27">
 
-    <link rel="icon" type="image/png" href="marca_agua_youtube_150.png?v=20261124.26">
+    <link rel="icon" type="image/png" href="marca_agua_youtube_150.png?v=20261124.27">
 
     <link rel="preload" as="image" href="https://raw.githubusercontent.com/InventivetalentDev/minecraft-assets/1.21.4/assets/minecraft/textures/block/tnt_side.png">
 
     <link rel="preload" as="image" href="https://raw.githubusercontent.com/InventivetalentDev/minecraft-assets/1.21.4/assets/minecraft/textures/block/tnt_top.png">
+<script>
+    // Comprueba el contenido publicado, incluso si no cambia la versión manual.
+    (() => {
+        const paths = ['index.html', 'style.css', 'script.js'];
+        const fingerprints = new Map();
+        let checking = false;
+        async function checkUpdates() {
+            if (checking || document.hidden || !navigator.onLine) return;
+            checking = true;
+            try {
+                const results = await Promise.all(paths.map(async path => {
+                    const url = new URL(path, document.baseURI);
+                    url.searchParams.set('_check', Date.now());
+                    const response = await fetch(url, {cache: 'no-store'});
+                    if (!response.ok) throw new Error('HTTP ' + response.status);
+                    const body = await response.text();
+                    return [path, body];
+                }));
+                const html = results[0][1];
+                const remote = new DOMParser().parseFromString(html, 'text/html');
+                const version = remote.querySelector('meta[name="site-version"]')?.content;
+                const local = document.querySelector('meta[name="site-version"]')?.content;
+                const changed = (version && local && version !== local) ||
+                    results.some(([path, body]) => fingerprints.has(path) && fingerprints.get(path) !== body);
+                if (changed) {
+                    const url = new URL(location.href);
+                    url.searchParams.set('_refresh', Date.now());
+                    location.replace(url.href);
+                    return;
+                }
+                results.forEach(([path, body]) => fingerprints.set(path, body));
+            } catch (error) {
+                console.debug('Comprobación de actualización no disponible.', error);
+            } finally {
+                checking = false;
+            }
+        }
+        addEventListener('load', checkUpdates, {once:true});
+        setInterval(checkUpdates, 30000);
+        document.addEventListener('visibilitychange', () => {
+            if (!document.hidden) checkUpdates();
+        });
+        addEventListener('pageshow', event => {if (event.persisted) checkUpdates();});
+        addEventListener('online', checkUpdates);
+    })();
+    </script>
 </head>
 
 <body>
@@ -316,7 +367,7 @@
         <a class="brand" href="#inicio">
             <img
                 class="logo-image"
-                src="marca_agua_youtube_150.png?v=20261124.26"
+                src="marca_agua_youtube_150.png?v=20261124.27"
                 alt=""
                 width="42"
                 height="42"
@@ -768,7 +819,7 @@
 
                     <img
                         class="logo-image"
-                        src="marca_agua_youtube_150.png?v=20261124.26"
+                        src="marca_agua_youtube_150.png?v=20261124.27"
                         alt=""
                         width="36"
                         height="36"
