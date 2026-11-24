@@ -120,3 +120,6 @@ body{background:#190c2c;position:relative;isolation:isolate}#nether-bg{position:
 
 /* Etiqueta de modo creativo: menú clásico de Minecraft */
 .art-label .mc-mode-label{display:inline-block;padding:8px 14px;background:#777;border:2px solid #181818;border-radius:0;box-shadow:inset 2px 2px 0 #bcbcbc,inset -2px -2px 0 #414141,2px 3px 0 #0007;color:#fff;font-size:14px;line-height:1.1;letter-spacing:0;text-shadow:2px 2px 0 #333;white-space:nowrap;}
+
+/* Título compacto, sin dejar la conjunción sola */
+.hero-copy{min-width:0;container-type:inline-size}.hero-copy h1{font-size:clamp(28px,8.8cqi,70px);line-height:1.04;margin:0 0 22px}.hero-copy h1 span{white-space:nowrap}
