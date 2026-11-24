@@ -8,3 +8,35 @@
 
 /* Header compacto */
 .header{padding-block:7px;gap:18px;min-height:0}.header .brand{font-size:20px;gap:3px;line-height:1.1}.header .logo-image{width:34px;height:34px;margin-right:4px}.header nav{gap:20px;line-height:1.2}.header .nav-cta{padding:5px 10px;font-size:14px;line-height:1.3}html{scroll-padding-top:62px}@media(max-width:800px){.header{padding-block:6px;gap:12px}.header .logo-image{width:32px;height:32px}.header .menu{padding:2px 9px;line-height:1.4}.header nav{top:100%;padding:16px 24px;gap:16px}}
+
+/* v8 — interfaces de inventario Gunxel */
+.project-grid{gap:20px;align-items:stretch}
+.project{--item:#ab8aff;--item-bg:#211938;display:flex;flex-direction:column;position:relative;padding:10px;border:2px solid #38334c;border-radius:4px;background:#15172a;box-shadow:inset 0 2px #ffffff0b,0 5px #050610;transition:transform .2s,border-color .2s,box-shadow .2s}
+.project[data-category="models"]{--item:#65d8ff;--item-bg:#102c3d}
+.project[data-category="packs"]{--item:#e2a4ff;--item-bg:#2c1b3d}
+.project:hover{transform:translateY(-4px);border-color:var(--item);box-shadow:inset 0 2px #ffffff12,0 6px #050610,0 0 22px color-mix(in srgb,var(--item) 16%,transparent)}
+.project .visual{height:180px;border:2px solid #080a16;border-radius:0;background-color:var(--item-bg);background-image:linear-gradient(#ffffff09 1px,transparent 1px),linear-gradient(90deg,#ffffff09 1px,transparent 1px);background-size:16px 16px;color:var(--item);box-shadow:inset 0 0 28px #0005}
+.project .visual::before{content:attr(data-slot);position:absolute;top:8px;left:10px;font-size:11px;letter-spacing:1px;color:var(--item)}
+.project .visual::after{content:"";position:absolute;right:8px;bottom:8px;width:12px;height:12px;border-right:2px solid var(--item);border-bottom:2px solid var(--item)}
+.project .visual svg{width:56%;height:66%;stroke-width:3;filter:drop-shadow(3px 4px 0 #0007);transition:transform .2s}
+.project:hover .visual svg{transform:translateY(-4px) scale(1.04)}
+.project-body{padding:16px 12px 8px;display:flex;flex-direction:column;flex:1}
+.project-body small{color:var(--item);font-size:12px;letter-spacing:1px}
+.project-body h3{font-size:27px;line-height:1.15;margin:8px 0}
+.project-body p{min-height:0;font-size:16px;line-height:1.45;margin-bottom:20px}
+.project .status{margin-top:auto;padding:10px 0 4px;border-top:2px solid #292c40;font-size:13px;color:#b7b9d0;display:flex;align-items:center;gap:8px}
+.project .status::before{content:"";width:7px;height:7px;background:var(--item);box-shadow:0 0 8px var(--item);flex:none}
+.filters .filter{border-radius:3px;border:2px solid #34374d;box-shadow:0 3px #060711;padding:6px 14px}
+.filters .filter.active{border-color:#a88bff;background:#32264d}
+.youtube-panel{border:2px solid #53384e;border-radius:4px;background:linear-gradient(110deg,#291b30,#141627 65%);padding:28px;box-shadow:0 5px #050610;gap:30px}
+.yt-icon{border-radius:3px;border:2px solid #a44b64;background:repeating-linear-gradient(0deg,#482439 0px,#482439 15px,#49273c 15px,#49273c 16px);color:#ff8f9e;box-shadow:inset 0 0 0 6px #191222;max-width:none;font-size:58px}
+.about-img img{border-radius:4px;border:2px solid #7760aa;box-shadow:6px 6px #201832}
+.about>div:last-child{border:2px solid #36354d;padding:26px;background:#15172a;border-radius:4px;box-shadow:0 5px #050610}
+.skills span{border-radius:2px;border:2px solid #34374d;background:#1d2035;color:#c8c5e6;box-shadow:0 2px #090b17}
+.contact{margin-block:42px 65px;padding:36px 20px;border:2px solid #41436b;background:linear-gradient(120deg,#1c1b36,#14182a);border-radius:4px;box-shadow:0 5px #050610}
+.contact .button,.youtube-panel .button{border-radius:3px;border:2px solid #5c507d;box-shadow:0 3px #080914}
+.art-frame{border-radius:5px;border:2px solid #7060ba;box-shadow:7px 7px #201832,0 0 45px #7453ea20}
+#discord-dialog{border-radius:4px!important;border-width:2px!important;box-shadow:6px 6px #080a14}
+@media(min-width:801px) and (max-width:1000px){.project-grid{gap:12px}.project-body{padding-inline:8px}.project-body h3{font-size:23px}}
+@media(max-width:800px){.project-grid{gap:18px}.project .visual{height:170px}.youtube-panel{padding:18px;gap:18px}.yt-icon{max-width:100%;aspect-ratio:2.5}.about>div:last-child{padding:20px}.contact{margin-block:25px 40px;padding:25px 15px}}
+@media(prefers-reduced-motion:reduce){.project:hover,.project:hover .visual svg{transform:none}}
