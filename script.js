@@ -32,7 +32,7 @@ document.querySelectorAll('[data-project-filter]').forEach(link=>link.addEventLi
  ['a[href="/add-ons/"]','Add-ons de Minecraft','Complementos para Bedrock y Java. Explora los gratuitos y de pago.','#a88bff',''],
  ['a[href="/packs/"]','Packs 3D','Colecciones de modelos 3D y recursos para tus proyectos.','#b5c7f3',''],
  ['.youtube-nav','Gunxel','Suscríbete','#ff5555','https://avatars.githubusercontent.com/u/360752888?v=4'],
- ['.tiktok-nav','TikTok','Vídeos cortos de Gunxel.','#25f4ee',''],
+ ['.tiktok-nav','Gunxel','Sígueme','#25f4ee','https://avatars.githubusercontent.com/u/360752888?v=4'],
  ['.x-nav','X','Publicaciones de Gunxel y novedades de sus proyectos.','#ddd',''],
  ['.nav-cta.discord-contact','Contacto','Comisiones, colaboraciones y consultas por Discord: gunxelmc.','#858fff',''],
  ['.menu','Menú','Abre la navegación del sitio.','#79cfff','']
@@ -45,7 +45,7 @@ document.querySelectorAll('[data-project-filter]').forEach(link=>link.addEventLi
  function hide(){clearTimeout(timer);if(active)active.removeAttribute('aria-describedby');active=null;shown=false;card.hidden=true;image.hidden=true;}
  function position(){if(!active||!shown)return;const b=active.getBoundingClientRect(),w=card.offsetWidth,h=card.offsetHeight;card.style.left=Math.max(10,Math.min(innerWidth-w-10,b.left+b.width/2-w/2))+'px';card.style.top=Math.max(10,Math.min(innerHeight-h-10,b.bottom+12))+'px';}
  function setImage(src){image.hidden=true;image.onload=()=>{if(shown){image.hidden=false;position();}};image.onerror=()=>{image.hidden=true;position();};image.src=src;}
- function open(el,data){if(active!==el)return;shown=true;const youtube=el.matches('.youtube-nav');card.classList.toggle('youtube-profile-preview',youtube);handle.hidden=!youtube;hint.hidden=youtube;title.textContent=data[1];description.textContent=data[2];card.style.setProperty('--preview-accent',data[3]);hint.textContent=el.matches('.menu')?'Clic para desplegar':'Clic para abrir';card.hidden=false;el.setAttribute('aria-describedby',card.id);if(data[4])setImage(data[4]);position();
+ function open(el,data){if(active!==el)return;shown=true;const youtube=el.matches('.youtube-nav'),tiktok=el.matches('.tiktok-nav');card.classList.toggle('youtube-profile-preview',youtube);card.classList.toggle('tiktok-profile-preview',tiktok);handle.textContent=tiktok?'@gunxelmc':'@Gunxel';handle.hidden=!(youtube||tiktok);hint.hidden=youtube||tiktok;title.textContent=data[1];description.textContent=data[2];card.style.setProperty('--preview-accent',data[3]);hint.textContent=el.matches('.menu')?'Clic para desplegar':'Clic para abrir';card.hidden=false;el.setAttribute('aria-describedby',card.id);if(data[4])setImage(data[4]);position();
  if(youtube){profilePromise??=fetch('https://raw.githubusercontent.com/gunxel/gunxel.github.io/main/youtube-profile.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error();return r.json()}).catch(()=>null);profilePromise.then(v=>{if(active!==el||!shown||!v)return;if(typeof v.avatar==='string'&&/^https:\/\/(yt3\.googleusercontent\.com|yt3\.ggpht\.com)\//.test(v.avatar))setImage(v.avatar);if(typeof v.name==='string'&&v.name)title.textContent=v.name;position();});}}
 
  function schedule(el,data){hide();active=el;timer=setTimeout(()=>open(el,data),900);}
