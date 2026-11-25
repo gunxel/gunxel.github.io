@@ -46,12 +46,26 @@ jobs:
               json.dumps({'id': video_id, 'title': title}, ensure_ascii=False, indent=2) + '\n',
               encoding='utf-8'
           )
+          # Extraer la foto pública del canal cuando esté disponible.
+          try:
+              profile = json.loads(subprocess.check_output([
+                  'yt-dlp', '--flat-playlist', '--playlist-end', '1',
+                  '--dump-single-json', '--no-warnings',
+                  'https://www.youtube.com/@Gunxel'
+              ], text=True))
+              thumbs = [t for t in profile.get('thumbnails', []) if re.match(r'https://(?:yt3\.googleusercontent\.com|yt3\.ggpht\.com)/', t.get('url', '')) and (t.get('width') or 0) == (t.get('height') or 0)]
+              if thumbs:
+                  avatar = max(thumbs, key=lambda t: t.get('width') or 0)['url']
+                  Path('youtube-profile.json').write_text(json.dumps({'name': 'Gunxel', 'avatar': avatar}, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          except Exception as e:
+              print('Foto de perfil no disponible:', e)
           PY
       - name: Guardar si hay un nuevo vídeo
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add latest-video.json
+          if [ -f youtube-profile.json ]; then git add youtube-profile.json; fi
           if git diff --cached --quiet; then
             exit 0
           fi
