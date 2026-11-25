@@ -156,3 +156,12 @@ body{background:#190c2c;position:relative;isolation:isolate}#nether-bg{position:
 
 /* Perfil de X en la previsualización */
 .header-preview.x-profile-preview{text-align:center;width:min(230px,calc(100vw - 20px));padding:18px}.x-profile-preview .header-preview-image{width:82px;height:82px;object-fit:cover;border-radius:50%;margin:0 auto 10px;border:2px solid #e7e9ea}.x-profile-preview strong{font-size:23px;color:#fff}.x-profile-preview p{display:inline-block;background:#eff3f4;color:#0f1419;border-radius:5px;padding:7px 16px;margin:12px 0 0;font-weight:700}
+
+/* Barra de desplazamiento del sitio Gunxel */
+html{scrollbar-width:thin;scrollbar-color:#459dff #101326}
+::-webkit-scrollbar{width:7px;height:7px}
+::-webkit-scrollbar-track{background:#101326}
+::-webkit-scrollbar-thumb{background:#459dff;border-radius:8px}
+::-webkit-scrollbar-thumb:hover{background:#79cfff}
+::-webkit-scrollbar-thumb:active{background:#2879d8}
+::-webkit-scrollbar-corner{background:#101326}
