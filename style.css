@@ -153,3 +153,6 @@ body{background:#190c2c;position:relative;isolation:isolate}#nether-bg{position:
 
 /* Perfil de TikTok en la previsualización */
 .header-preview.tiktok-profile-preview{text-align:center;width:min(230px,calc(100vw - 20px));padding:18px}.tiktok-profile-preview .header-preview-image{width:82px;height:82px;object-fit:cover;border-radius:50%;margin:0 auto 10px;border:2px solid #25f4ee;box-shadow:2px 1px #fe2c55}.tiktok-profile-preview strong{font-size:23px;color:#fff}.tiktok-profile-preview p{display:inline-block;background:#fe2c55;color:#fff;border-radius:5px;padding:7px 16px;margin:12px 0 0;font-weight:700}
+
+/* Perfil de X en la previsualización */
+.header-preview.x-profile-preview{text-align:center;width:min(230px,calc(100vw - 20px));padding:18px}.x-profile-preview .header-preview-image{width:82px;height:82px;object-fit:cover;border-radius:50%;margin:0 auto 10px;border:2px solid #e7e9ea}.x-profile-preview strong{font-size:23px;color:#fff}.x-profile-preview p{display:inline-block;background:#eff3f4;color:#0f1419;border-radius:5px;padding:7px 16px;margin:12px 0 0;font-weight:700}
