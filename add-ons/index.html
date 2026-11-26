@@ -16,9 +16,9 @@
     })();
     </script>
 
-    <meta name="site-version" content="20261124.57">
+    <meta name="site-version" content="20261124.58">
 
-    <link rel="icon" type="image/png" href="/marca_agua_youtube_150.png?v=20261124.57">
+    <link rel="icon" type="image/png" href="/marca_agua_youtube_150.png?v=20261124.58">
 
     <link rel="preload" as="image" href="https://raw.githubusercontent.com/InventivetalentDev/minecraft-assets/1.21.4/assets/minecraft/textures/block/tnt_side.png">
 
@@ -147,7 +147,7 @@
         <a class="brand" href="/">
             <img
                 class="logo-image"
-                src="/marca_agua_youtube_150.png?v=20261124.57"
+                src="/marca_agua_youtube_150.png?v=20261124.58"
                 alt=""
                 width="42"
                 height="42"
@@ -276,14 +276,9 @@
 <button type="button" class="addon-edition active" data-edition="bedrock" aria-pressed="true">Minecraft Bedrock</button>
 <button type="button" class="addon-edition" data-edition="java" aria-pressed="false">Minecraft Java</button>
 </div>
-<div class="addon-prices" role="group" aria-label="Precio">
-<button type="button" class="addon-price active" data-price="all" aria-pressed="true">Todos</button>
-<button type="button" class="addon-price" data-price="free" aria-pressed="false">Gratis</button>
-
-</div>
-<section class="addon-results" aria-label="Catálogo de add-ons"><div class="project-grid" id="addon-grid"></div><div id="addon-empty" class="catalog-empty"><img src="/assets/gunxel-confundido.webp?v=20261124.57" alt="" width="600" height="548"><p id="addon-empty-message" role="status">Próximamente: add-ons para Minecraft Bedrock.</p></div></section>
+<section class="addon-results" aria-label="Catálogo de add-ons"><div class="project-grid" id="addon-grid"></div><div id="addon-empty" class="catalog-empty"><img src="/assets/gunxel-confundido.webp?v=20261124.58" alt="" width="600" height="548"><p id="addon-empty-message" role="status">Próximamente: add-ons para Minecraft Bedrock.</p></div></section>
 <script>
-(()=>{let edition='bedrock',price='all';const editions=document.querySelectorAll('.addon-edition'),prices=document.querySelectorAll('.addon-price'),empty=document.getElementById('addon-empty');function render(){let count=0;document.querySelectorAll('#addon-grid [data-edition][data-price]').forEach(card=>{const match=card.dataset.edition===edition&&(price==='all'||card.dataset.price===price);card.hidden=!match;if(match)count++;});empty.hidden=count>0;document.getElementById('addon-empty-message').textContent='No hay add-ons '+(price==='free'?'gratis ':price==='paid'?'de pago ':'')+'publicados para Minecraft '+(edition==='bedrock'?'Bedrock':'Java')+'.';}function select(group,button){group.forEach(b=>{b.classList.toggle('active',b===button);b.setAttribute('aria-pressed',String(b===button));});}editions.forEach(b=>b.addEventListener('click',()=>{edition=b.dataset.edition;select(editions,b);render();}));prices.forEach(b=>b.addEventListener('click',()=>{price=b.dataset.price;select(prices,b);render();}));render();})();
+(()=>{let edition='bedrock';const editions=document.querySelectorAll('.addon-edition'),empty=document.getElementById('addon-empty');function render(){let count=0;document.querySelectorAll('#addon-grid [data-edition]').forEach(card=>{const match=card.dataset.edition===edition;card.hidden=!match;if(match)count++;});empty.hidden=count>0;document.getElementById('addon-empty-message').textContent='No hay add-ons '+'publicados para Minecraft '+(edition==='bedrock'?'Bedrock':'Java')+'.';}function select(group,button){group.forEach(b=>{b.classList.toggle('active',b===button);b.setAttribute('aria-pressed',String(b===button));});}editions.forEach(b=>b.addEventListener('click',()=>{edition=b.dataset.edition;select(editions,b);render();}));render();})();
 </script></main>
 
     <!-- FOOTER -->
@@ -300,7 +295,7 @@
 
                     <img
                         class="logo-image"
-                        src="/marca_agua_youtube_150.png?v=20261124.57"
+                        src="/marca_agua_youtube_150.png?v=20261124.58"
                         alt=""
                         width="36"
                         height="36"
