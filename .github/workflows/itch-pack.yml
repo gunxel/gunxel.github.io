@@ -1,5 +1,8 @@
 name: Actualizar portada del pack de itch.io
 on:
+  push:
+    branches: [main]
+    paths: [".github/workflows/itch-pack.yml"]
   workflow_dispatch:
   schedule:
     - cron: '23 5 * * *'
@@ -36,7 +39,7 @@ jobs:
           kind = "unknown"
           if match:
               kind = "paid" if float(match.group().replace(",", ".")) > 0 else "free"
-          Path("assets/cozy-christmas-meta.json").write_text(json.dumps({"price":kind})+"\n")
+          Path("assets/cozy-christmas-meta.json").write_text(json.dumps({"price":kind,"cover":cover["content"],"amount":float(match.group().replace(",", ".")) if match else 4.99})+"\n")
           PY
       - name: Guardar recursos
         run: |
