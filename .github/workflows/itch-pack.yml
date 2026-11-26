@@ -1,0 +1,49 @@
+name: Actualizar portada del pack de itch.io
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '23 5 * * *'
+permissions:
+  contents: write
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Obtener portada y precio públicos
+        run: |
+          python -m pip install requests beautifulsoup4 pillow
+          python - <<'PY'
+          import requests, json, re
+          from bs4 import BeautifulSoup
+          from pathlib import Path
+          from PIL import Image
+          from io import BytesIO
+          url = "https://gunxel.itch.io/cozy-christmas-winter-pack-30-low-poly-3d-models"
+          r = requests.get(url, timeout=30, headers={"User-Agent":"Mozilla/5.0"})
+          r.raise_for_status()
+          soup = BeautifulSoup(r.text, "html.parser")
+          cover = soup.find("meta", property="og:image")
+          if not cover or not cover.get("content"):
+              raise RuntimeError("Portada pública no encontrada")
+          image = requests.get(cover["content"], timeout=30)
+          image.raise_for_status()
+          Path("assets").mkdir(exist_ok=True)
+          Image.open(BytesIO(image.content)).convert("RGB").save("assets/cozy-christmas-cover.jpg", quality=94)
+          price = soup.find("meta", property="itch:price") or soup.find("meta", property="product:price:amount")
+          raw = price.get("content","") if price else ""
+          match = re.search(r"\d+(?:[.,]\d+)?", raw)
+          kind = "unknown"
+          if match:
+              kind = "paid" if float(match.group().replace(",", ".")) > 0 else "free"
+          Path("assets/cozy-christmas-meta.json").write_text(json.dumps({"price":kind})+"\n")
+          PY
+      - name: Guardar recursos
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/cozy-christmas-cover.jpg assets/cozy-christmas-meta.json
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "Actualizar portada de Cozy Christmas Winter Pack"
+          git pull --rebase
+          git push
